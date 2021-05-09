@@ -71,8 +71,260 @@ class Foods with ChangeNotifier {
     ),
   ];
 
+  List<Food> _recent = [
+    Food(
+      id: 'p1',
+      name: 'Hawaian Pizza',
+      category: 'Italian',
+      image: 'lib/assets/images/pizza.jpg',
+      tag: 'pizzas',
+      creatorId: 'John Doe',
+    ),
+    Food(
+      id: 'p2',
+      name: 'Chicken Alfredo',
+      category: 'Italian',
+      image: 'lib/assets/images/pasta.jpg',
+      tag: 'pastas',
+      creatorId: 'Gina Doe',
+    ),
+    Food(
+      id: 'p3',
+      name: 'Cold Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cake.jpg',
+      tag: 'cake',
+      creatorId: 'Jane Doe',
+    ),
+    Food(
+      id: 'p4',
+      name: 'Cheese Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cheese_cake.jpg',
+      tag: 'cake',
+      creatorId: 'Adam Smith',
+    ),
+    Food(
+      id: 'p5',
+      name: 'Chicken Wings',
+      category: 'Appetizers',
+      image: 'lib/assets/images/wings.jpg',
+      tag: 'appetizer',
+      creatorId: 'Richard Parker',
+    ),
+    Food(
+      id: 'p6',
+      name: 'Escabeche',
+      category: 'Belizean',
+      image: 'lib/assets/images/onion.jpg',
+      tag: 'belizean',
+      creatorId: 'Alfredo Ritche',
+    ),
+    Food(
+      id: 'p7',
+      name: 'Relleno',
+      category: 'Belizean',
+      image: 'lib/assets/images/relleno.jpeg',
+      tag: 'belizean',
+      creatorId: 'Orlando Portillo',
+    ),
+  ];
+
+  List<Food> _breakfast = [
+    Food(
+      id: 'p5',
+      name: 'Chicken Wings',
+      category: 'Appetizers',
+      image: 'lib/assets/images/wings.jpg',
+      tag: 'appetizer',
+      creatorId: 'Richard Parker',
+    ),
+    Food(
+      id: 'p4',
+      name: 'Cheese Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cheese_cake.jpg',
+      tag: 'cake',
+      creatorId: 'Adam Smith',
+    ),
+    Food(
+      id: 'p3',
+      name: 'Cold Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cake.jpg',
+      tag: 'cake',
+      creatorId: 'Jane Doe',
+    ),
+    Food(
+      id: 'p2',
+      name: 'Chicken Alfredo',
+      category: 'Italian',
+      image: 'lib/assets/images/pasta.jpg',
+      tag: 'pastas',
+      creatorId: 'Gina Doe',
+    ),
+    Food(
+      id: 'p1',
+      name: 'Hawaian Pizza',
+      category: 'Italian',
+      image: 'lib/assets/images/pizza.jpg',
+      tag: 'pizzas',
+      creatorId: 'John Doe',
+    ),
+    Food(
+      id: 'p6',
+      name: 'Escabeche',
+      category: 'Belizean',
+      image: 'lib/assets/images/onion.jpg',
+      tag: 'belizean',
+      creatorId: 'Alfredo Ritche',
+    ),
+    Food(
+      id: 'p7',
+      name: 'Relleno',
+      category: 'Belizean',
+      image: 'lib/assets/images/relleno.jpeg',
+      tag: 'belizean',
+      creatorId: 'Orlando Portillo',
+    ),
+  ];
+
+  List<Food> _lunch = [
+    Food(
+      id: 'p3',
+      name: 'Cold Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cake.jpg',
+      tag: 'cake',
+      creatorId: 'Jane Doe',
+    ),
+    Food(
+      id: 'p2',
+      name: 'Chicken Alfredo',
+      category: 'Italian',
+      image: 'lib/assets/images/pasta.jpg',
+      tag: 'pastas',
+      creatorId: 'Gina Doe',
+    ),
+    Food(
+      id: 'p5',
+      name: 'Chicken Wings',
+      category: 'Appetizers',
+      image: 'lib/assets/images/wings.jpg',
+      tag: 'appetizer',
+      creatorId: 'Richard Parker',
+    ),
+    Food(
+      id: 'p4',
+      name: 'Cheese Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cheese_cake.jpg',
+      tag: 'cake',
+      creatorId: 'Adam Smith',
+    ),
+    Food(
+      id: 'p1',
+      name: 'Hawaian Pizza',
+      category: 'Italian',
+      image: 'lib/assets/images/pizza.jpg',
+      tag: 'pizzas',
+      creatorId: 'John Doe',
+    ),
+    Food(
+      id: 'p6',
+      name: 'Escabeche',
+      category: 'Belizean',
+      image: 'lib/assets/images/onion.jpg',
+      tag: 'belizean',
+      creatorId: 'Alfredo Ritche',
+    ),
+    Food(
+      id: 'p7',
+      name: 'Relleno',
+      category: 'Belizean',
+      image: 'lib/assets/images/relleno.jpeg',
+      tag: 'belizean',
+      creatorId: 'Orlando Portillo',
+    ),
+  ];
+
+  List<Food> _dinner = [
+    Food(
+      id: 'p6',
+      name: 'Escabeche',
+      category: 'Belizean',
+      image: 'lib/assets/images/onion.jpg',
+      tag: 'belizean',
+      creatorId: 'Alfredo Ritche',
+    ),
+    Food(
+      id: 'p7',
+      name: 'Relleno',
+      category: 'Belizean',
+      image: 'lib/assets/images/relleno.jpeg',
+      tag: 'belizean',
+      creatorId: 'Orlando Portillo',
+    ),
+    Food(
+      id: 'p3',
+      name: 'Cold Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cake.jpg',
+      tag: 'cake',
+      creatorId: 'Jane Doe',
+    ),
+    Food(
+      id: 'p2',
+      name: 'Chicken Alfredo',
+      category: 'Italian',
+      image: 'lib/assets/images/pasta.jpg',
+      tag: 'pastas',
+      creatorId: 'Gina Doe',
+    ),
+    Food(
+      id: 'p5',
+      name: 'Chicken Wings',
+      category: 'Appetizers',
+      image: 'lib/assets/images/wings.jpg',
+      tag: 'appetizer',
+      creatorId: 'Richard Parker',
+    ),
+    Food(
+      id: 'p4',
+      name: 'Cheese Cake',
+      category: 'Pastries',
+      image: 'lib/assets/images/cheese_cake.jpg',
+      tag: 'cake',
+      creatorId: 'Adam Smith',
+    ),
+    Food(
+      id: 'p1',
+      name: 'Hawaian Pizza',
+      category: 'Italian',
+      image: 'lib/assets/images/pizza.jpg',
+      tag: 'pizzas',
+      creatorId: 'John Doe',
+    )
+  ];
+
   List<Food> get foods {
     return [..._foods];
+  }
+
+  List<Food> get recent {
+    return [..._recent];
+  }
+
+  List<Food> get breakfast {
+    return [..._breakfast];
+  }
+
+  List<Food> get lunch {
+    return [..._lunch];
+  }
+
+  List<Food> get dinner {
+    return [..._dinner];
   }
 
   /*List<Product> get favoriteItems {

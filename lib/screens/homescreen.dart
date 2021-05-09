@@ -9,6 +9,7 @@ import '../widgets/bottom_nav.dart';
 import '../widgets/round_email_field.dart';
 import '../widgets/cat_button.dart';
 import '../widgets/trending_card.dart';
+import '../widgets/small_food_card.dart';
 
 import '../providers/categories.dart';
 import '../providers/foods.dart';
@@ -21,6 +22,10 @@ class HomeScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     final categories = Provider.of<Categories>(context).categories;
     final foods = Provider.of<Foods>(context).foods;
+    final recent = Provider.of<Foods>(context).recent;
+    final breakfast = Provider.of<Foods>(context).breakfast;
+    final lunch = Provider.of<Foods>(context).lunch;
+    final dinner = Provider.of<Foods>(context).dinner;
     return Scaffold(
       key: _scaffoldKey,
       drawer: AppDrawer(),
@@ -104,6 +109,9 @@ class HomeScreen extends StatelessWidget {
                     itemCount: categories.length,
                   ),
                 ),
+                SizedBox(
+                  height: size.height * .01,
+                ),
                 SubCategory(
                   displayTxt: 'Most Popular',
                   theme: Theme.of(context).textTheme.headline5,
@@ -123,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: size.height * .02,
+                  height: size.height * .015,
                 ),
                 SubCategory(
                   displayTxt: 'Recently Added',
@@ -138,63 +146,21 @@ class HomeScreen extends StatelessWidget {
                       bottom: 8.0,
                       right: 12,
                     ),
-                    child: Container(
-                      width: size.width * .38,
-                      color: Colors.transparent,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: (size.height * .28) * .68,
-                            decoration: BoxDecoration(
-                              color: Colors.blueAccent,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                  'lib/assets/images/wings.jpg',
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 10.0,
-                              left: 2,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Chicken Wings',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontFamily: 'Amaranth',
-                                  ),
-                                ),
-                                Text(
-                                  'by John Doe',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
-                                    fontFamily: 'Amaranth',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, index) => SmallFoodCard(
+                        image: recent[index].image,
+                        name: recent[index].name,
+                        author: recent[index].creatorId,
+                        length: recent.length,
+                        index: index,
                       ),
+                      itemCount: recent.length,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: size.height * .01,
+                  height: size.height * .015,
                 ),
                 SubCategory(
                   displayTxt: 'Breakfast',
@@ -202,7 +168,28 @@ class HomeScreen extends StatelessWidget {
                   trailingTxt: 'Popular breakfast recipes',
                 ),
                 SizedBox(
-                  height: size.height * .18,
+                  height: size.height * .28,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 12.0,
+                      bottom: 8.0,
+                      right: 12,
+                    ),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, index) => SmallFoodCard(
+                        image: breakfast[index].image,
+                        name: breakfast[index].name,
+                        author: breakfast[index].creatorId,
+                        length: breakfast.length,
+                        index: index,
+                      ),
+                      itemCount: breakfast.length,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * .015,
                 ),
                 SubCategory(
                   displayTxt: 'Lunch',
@@ -210,15 +197,57 @@ class HomeScreen extends StatelessWidget {
                   trailingTxt: 'Popular lunch recipes',
                 ),
                 SizedBox(
-                  height: size.height * .18,
-                ),
-                SubCategory(
-                  displayTxt: 'Diner',
-                  theme: Theme.of(context).textTheme.headline5,
-                  trailingTxt: 'Popular diner recipes',
+                  height: size.height * .28,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 12.0,
+                      bottom: 8.0,
+                      right: 12,
+                    ),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, index) => SmallFoodCard(
+                        image: lunch[index].image,
+                        name: lunch[index].name,
+                        author: lunch[index].creatorId,
+                        length: lunch.length,
+                        index: index,
+                      ),
+                      itemCount: lunch.length,
+                    ),
+                  ),
                 ),
                 SizedBox(
-                  height: size.height * .18,
+                  height: size.height * .015,
+                ),
+                SubCategory(
+                  displayTxt: 'Dinner',
+                  theme: Theme.of(context).textTheme.headline5,
+                  trailingTxt: 'Popular dinner recipes',
+                ),
+                SizedBox(
+                  height: size.height * .28,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 12.0,
+                      bottom: 8.0,
+                      right: 12,
+                    ),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, index) => SmallFoodCard(
+                        image: dinner[index].image,
+                        name: dinner[index].name,
+                        author: dinner[index].creatorId,
+                        length: dinner.length,
+                        index: index,
+                      ),
+                      itemCount: dinner.length,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * .01,
                 ),
               ],
             ),
