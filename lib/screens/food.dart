@@ -5,43 +5,169 @@ class FoodUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Column(
+    double appBarSize = AppBar().preferredSize.height;
+    //AppBar().preferredSize.height;
+    return Container(
+      child: Stack(
         children: [
           Container(
-            height: size.height * .28,
-          ),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xfff2f2f2),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(29),
-                  topRight: Radius.circular(29),
+            height: size.height * .36,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage(
+                  "lib/assets/images/wings.jpg",
                 ),
               ),
-              padding: EdgeInsets.only(
-                right: 20,
-                left: 20,
-              ),
             ),
+          ),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(.38),
+              elevation: 0,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  size: 25,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.more_vert,
+                    size: 25,
+                  ),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            body: Stack(
+              children: [
+                Positioned(
+                  top: (size.height * .30) - appBarSize,
+                  child: Container(
+                    height: size.height * .65,
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 12.0,
+                          right: 20,
+                          left: 20,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Chicken Wings',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Text(
+                                'Edgar A. Chan',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                  fontFamily: 'Amaranth',
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: size.height * .02,
+                            ),
+                            Text(
+                              'Ingredients',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            SizedBox(
+                              height: size.height * .005,
+                            ),
+                            Text(
+                              'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 16,
+                                  ),
+                            ),
+                            SizedBox(
+                              height: size.height * .022,
+                            ),
+                            Text(
+                              'Instructions',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            SizedBox(
+                              height: size.height * .005,
+                            ),
+                            Text(
+                              'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 16,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            /*body: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(29),
+                        topRight: Radius.circular(29),
+                      ),
+                    ),
+                    padding: EdgeInsets.only(
+                      right: 20,
+                      left: 20,
+                    ),
+                  ),
+                ),
+              ],
+            ),*/
           ),
         ],
       ),

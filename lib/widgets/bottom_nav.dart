@@ -35,7 +35,10 @@ class BottomNav extends StatelessWidget {
         children: [
           Stack(
             children: [
-              IconButton(icon: Icon(Icons.home), onPressed: null),
+              IconButton(
+                icon: Icon(Icons.home),
+                onPressed: () {},
+              ),
               Positioned(
                 top: (size.height * .09) * .52,
                 left: (size.height * .09) * .12,
@@ -50,7 +53,10 @@ class BottomNav extends StatelessWidget {
           ),
           Stack(
             children: [
-              IconButton(icon: Icon(Icons.star), onPressed: null),
+              IconButton(
+                icon: Icon(Icons.star),
+                onPressed: () {},
+              ),
               Positioned(
                 top: (size.height * .09) * .52,
                 left: (size.height * .09) * .001,
@@ -65,7 +71,10 @@ class BottomNav extends StatelessWidget {
           ),
           Stack(
             children: [
-              IconButton(icon: Icon(Icons.person), onPressed: null),
+              IconButton(
+                icon: Icon(Icons.person),
+                onPressed: () {},
+              ),
               Positioned(
                 top: (size.height * .09) * .52,
                 left: (size.height * .09) * .12,
