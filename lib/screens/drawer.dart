@@ -22,7 +22,7 @@ class AppDrawer extends StatelessWidget {
               icon: Icons.home,
               name: 'Home',
               desc: 'Navigate to home screen',
-              route: '',
+              route: '/',
             ),
             Divider(
               color: Theme.of(context).primaryColor,
@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
               icon: Icons.person,
               name: 'Profile Information',
               desc: 'Change your account info',
-              route: '',
+              route: '/profile',
             ),
             Divider(
               color: Theme.of(context).primaryColor,
@@ -40,7 +40,7 @@ class AppDrawer extends StatelessWidget {
               icon: Icons.edit,
               name: 'Change Password',
               desc: 'Change your password',
-              route: '',
+              route: '/change-password',
             ),
             Divider(
               color: Theme.of(context).primaryColor,
@@ -49,7 +49,7 @@ class AppDrawer extends StatelessWidget {
               icon: Icons.credit_card,
               name: 'Payment Methods',
               desc: 'Add credit & debit cards',
-              route: '',
+              route: '/payment-methods',
             ),
             Divider(
               color: Theme.of(context).primaryColor,

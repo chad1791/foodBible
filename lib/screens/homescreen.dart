@@ -14,6 +14,8 @@ import '../widgets/small_food_card.dart';
 import '../providers/categories.dart';
 import '../providers/foods.dart';
 
+/////refactor code into recently, breakfast, lunch & dinner...
+
 class HomeScreen extends StatelessWidget {
   static final routeName = 'home';
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -21,7 +23,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final categories = Provider.of<Categories>(context).categories;
-    final foods = Provider.of<Foods>(context).foods;
+    final popular = Provider.of<Foods>(context).foods;
     final recent = Provider.of<Foods>(context).recent;
     final breakfast = Provider.of<Foods>(context).breakfast;
     final lunch = Provider.of<Foods>(context).lunch;
@@ -122,12 +124,12 @@ class HomeScreen extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) => TrendingCard(
-                      name: foods[index].name,
-                      image: foods[index].image,
+                      name: popular[index].name,
+                      image: popular[index].image,
                       index: index,
-                      length: foods.length,
+                      length: popular.length,
                     ),
-                    itemCount: foods.length,
+                    itemCount: popular.length,
                   ),
                 ),
                 SizedBox(

@@ -7,6 +7,11 @@ import 'screens/login.dart';
 import 'screens/register.dart';
 import 'screens/homescreen.dart';
 import 'screens/food.dart';
+import 'screens/profile.dart';
+import 'screens/change_password.dart';
+import 'screens/payment_methods.dart';
+import 'screens/chefs.dart';
+import 'screens/search.dart';
 
 import 'providers/categories.dart';
 import 'providers/foods.dart';
@@ -64,6 +69,11 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (_) => HomeScreen(),
           Register.routeName: (_) => Register(),
           FoodUI.routeName: (_) => FoodUI(),
+          Profile.routeName: (_) => Profile(),
+          ChangePassword.routeName: (_) => ChangePassword(),
+          Chefs.routeName: (_) => Chefs(),
+          PaymentMethods.routeName: (_) => PaymentMethods(),
+          Search.routeName: (_) => Search(),
         },
       ),
     );

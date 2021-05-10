@@ -77,7 +77,7 @@ class TrendingCard extends StatelessWidget {
                               right: 38.0,
                             ),
                             child: Text(
-                              'by Edgar A. Chan',
+                              'by John A. Doe',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Amaranth',

@@ -59,13 +59,14 @@ class FoodUI extends StatelessWidget {
                         topRight: Radius.circular(20),
                       ),
                     ),
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 12.0,
-                          right: 20,
-                          left: 20,
-                        ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 15.0,
+                        right: 20,
+                        left: 20,
+                        bottom: 10,
+                      ),
+                      child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -75,7 +76,7 @@ class FoodUI extends StatelessWidget {
                                   .textTheme
                                   .headline6
                                   .copyWith(
-                                    fontSize: 25,
+                                    fontSize: 27,
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
@@ -84,7 +85,7 @@ class FoodUI extends StatelessWidget {
                               child: Text(
                                 'Edgar A. Chan',
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,
                                   fontFamily: 'Amaranth',
@@ -100,7 +101,7 @@ class FoodUI extends StatelessWidget {
                                   .textTheme
                                   .headline6
                                   .copyWith(
-                                    fontSize: 20,
+                                    fontSize: 23,
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
@@ -120,17 +121,49 @@ class FoodUI extends StatelessWidget {
                               height: size.height * .022,
                             ),
                             Text(
-                              'Instructions',
+                              'Method',
                               style: Theme.of(context)
                                   .textTheme
                                   .headline6
                                   .copyWith(
-                                    fontSize: 20,
+                                    fontSize: 23,
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
                             SizedBox(
-                              height: size.height * .005,
+                              height: size.height * .008,
+                            ),
+                            Text(
+                              'Step 1',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 21,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            Text(
+                              'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 16,
+                                  ),
+                            ),
+                            SizedBox(
+                              height: size.height * .01,
+                            ),
+                            Text(
+                              'Step 2',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  .copyWith(
+                                    fontSize: 21,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             Text(
                               'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',

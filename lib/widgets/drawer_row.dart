@@ -59,7 +59,9 @@ class DrawerRow extends StatelessWidget {
             size: 18,
           ),
           onPressed: () {
-            Navigator.of(context).pushNamed(route);
+            route == '/'
+                ? Navigator.of(context).pushReplacementNamed(route)
+                : Navigator.of(context).pushNamed(route);
           },
         ),
       ],
