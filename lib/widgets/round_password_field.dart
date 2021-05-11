@@ -6,11 +6,13 @@ class RoundedPasswordField extends StatelessWidget {
   final Color containerColor;
   final Function onSaved;
   final FocusNode node;
+  final String hintText;
   const RoundedPasswordField({
     Key key,
     this.onSaved,
     this.node,
     this.containerColor = const Color(0xfff2f2f2),
+    this.hintText = "Password",
   }) : super(key: key);
 
   @override
@@ -21,7 +23,7 @@ class RoundedPasswordField extends StatelessWidget {
         onSaved: onSaved,
         obscureText: true,
         decoration: InputDecoration(
-          hintText: "Password",
+          hintText: hintText,
           icon: Icon(
             Icons.lock,
             color: Color(0xfff96d00),

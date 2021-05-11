@@ -12,6 +12,8 @@ import 'screens/change_password.dart';
 import 'screens/payment_methods.dart';
 import 'screens/chefs.dart';
 import 'screens/search.dart';
+import 'screens/notifications.dart';
+import 'screens/favorites.dart';
 
 import 'providers/categories.dart';
 import 'providers/foods.dart';
@@ -74,6 +76,8 @@ class MyApp extends StatelessWidget {
           Chefs.routeName: (_) => Chefs(),
           PaymentMethods.routeName: (_) => PaymentMethods(),
           Search.routeName: (_) => Search(),
+          Notifications.routeName: (_) => Notifications(),
+          Favorites.routeName: (_) => Favorites(),
         },
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/drawer.dart';
+import '../screens/notifications.dart';
 
 import '../widgets/sub_category.dart';
 import '../widgets/bottom_nav.dart';
@@ -66,7 +67,9 @@ class HomeScreen extends StatelessWidget {
               Icons.notifications,
               color: Theme.of(context).iconTheme.color,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(Notifications.routeName);
+            },
           ),
         ],
         elevation: 0,
@@ -85,10 +88,13 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: size.width * .022),
-                  child: RoundedEmailField(
-                    hintText: 'Search Here',
-                    icon: Icons.search,
-                    containerColor: Colors.white,
+                  child: Form(
+                    child: RoundedEmailField(
+                      hintText: 'Search Here',
+                      icon: Icons.search,
+                      containerColor: Colors.white,
+                      //onSubmit:
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -256,7 +262,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNav(),
+      bottomNavigationBar: BottomNav(scaffoldkey: _scaffoldKey),
     );
   }
 }

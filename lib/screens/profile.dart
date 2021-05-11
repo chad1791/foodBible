@@ -21,7 +21,7 @@ class Profile extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.more_vert), //hire a chef.. add new recipe
             onPressed: () {},
           ),
         ],

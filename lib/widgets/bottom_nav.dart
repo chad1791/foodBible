@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../screens/favorites.dart';
+import '../screens/profile.dart';
+
 class BottomNav extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldkey;
   const BottomNav({
+    @required this.scaffoldkey,
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    //final _scaffoldKey = new GlobalKey<ScaffoldState>();
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 35,
@@ -37,7 +43,9 @@ class BottomNav extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.home),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/');
+                },
               ),
               Positioned(
                 top: (size.height * .09) * .52,
@@ -55,7 +63,9 @@ class BottomNav extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.star),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Favorites.routeName);
+                },
               ),
               Positioned(
                 top: (size.height * .09) * .52,
@@ -73,7 +83,9 @@ class BottomNav extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.person),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(Profile.routeName);
+                },
               ),
               Positioned(
                 top: (size.height * .09) * .52,
@@ -91,7 +103,9 @@ class BottomNav extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.settings),
-                onPressed: () {},
+                onPressed: () {
+                  scaffoldkey.currentState.openDrawer();
+                },
               ),
               Positioned(
                 top: (size.height * .09) * .52,
