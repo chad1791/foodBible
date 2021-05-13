@@ -5,12 +5,15 @@ class DrawerRow extends StatelessWidget {
   final String name;
   final String desc;
   final String route;
+  final Widget child;
+
   const DrawerRow({
     Key key,
     this.icon,
     this.name,
     this.desc,
     this.route,
+    this.child,
   }) : super(key: key);
 
   @override
@@ -52,18 +55,20 @@ class DrawerRow extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          icon: Icon(
-            Icons.arrow_forward_ios,
-            color: Color(0xfff2f2f2),
-            size: 18,
-          ),
-          onPressed: () {
-            route == '/'
-                ? Navigator.of(context).pushReplacementNamed(route)
-                : Navigator.of(context).pushNamed(route);
-          },
-        ),
+        child == null
+            ? IconButton(
+                icon: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Color(0xfff2f2f2),
+                  size: 18,
+                ),
+                onPressed: () {
+                  route == '/'
+                      ? Navigator.of(context).pushReplacementNamed(route)
+                      : Navigator.of(context).pushNamed(route);
+                },
+              )
+            : child,
       ],
     );
   }
