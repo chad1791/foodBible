@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import '../models/category.dart';
 
 class CategoryButton extends StatelessWidget {
-  final num index;
-  final num length;
+  final int index;
+  final int length;
+  final String name;
   const CategoryButton({
     Key key,
     @required this.index,
-    @required this.categories,
+    //@required this.categories,
     @required this.length,
+    @required this.name,
   }) : super(key: key);
 
-  final List<Category> categories;
+  //final List<Category> categories;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class CategoryButton extends StatelessWidget {
                   ],
                 ),
                 child: Text(
-                  categories[index].name + ' ',
+                  name,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

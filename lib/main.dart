@@ -36,20 +36,19 @@ class MyApp extends StatelessWidget {
         //ChangeNotifierProvider(
         //create: (_) => Auth(),
         //),
-        ChangeNotifierProvider(
-          create: (_) => Categories(),
+        //ChangeNotifierProvider(
+        //create: (_) => Categories(),
+        //),
+        ChangeNotifierProxyProvider0<Categories>(
+          //create: (_) => Categories([]),
+          update: (_, prevCats) => Categories(
+            prevCats == null ? [] : prevCats.categories,
+          ),
         ),
         ChangeNotifierProvider(
           create: (_) => Foods(),
         ),
-        /*ChangeNotifierProxyProvider<Auth, Categories>(
-          update: (_, auth, previousCats) => Categories(
-            auth.token,
-            auth.userId,
-            previousCats == null ? [] : previousCats,
-          ),
-        ),
-        ChangeNotifierProxyProvider<Auth, ReceivedPackages>(
+        /*ChangeNotifierProxyProvider<Auth, ReceivedPackages>(
           update: (_, auth, prevPackages) => ReceivedPackages(
             auth.token,
             auth.userId,

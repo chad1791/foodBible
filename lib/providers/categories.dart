@@ -1,6 +1,7 @@
 //import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-//import 'package:http/http.dart' as http;
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 //import '../models/http_exception.dart';
 import '../models/category.dart';
@@ -10,10 +11,11 @@ class Categories with ChangeNotifier {
   //final String userId;
 
   //Categories(this.token, this.userId, this._categories);
-  Categories();
+  Categories(this._categories);
+  //Categories();
 
   List<Category> _categories = [
-    Category(
+    /*Category(
       id: 'p1',
       name: 'Italian',
     ),
@@ -40,11 +42,47 @@ class Categories with ChangeNotifier {
     Category(
       id: 'p4',
       name: 'Vegan',
-    ),
+    ),*/
   ];
 
   List<Category> get categories {
     return [..._categories];
+  }
+
+  Future<void> addCategory(String name, String desc) async {
+    Map<String, dynamic> category = {'name': '$name', 'desc': '$desc'};
+
+    CollectionReference collections =
+        FirebaseFirestore.instance.collection('categories');
+
+    collections.add(category);
+  }
+
+  Future<void> fetchCategories() async {
+    try {
+      final List<Category> _tempCategories = [];
+
+      CollectionReference collections =
+          FirebaseFirestore.instance.collection('categories');
+
+      collections.snapshots().listen((data) {
+        if (data.docs.length == 0) {
+          return;
+        }
+        data.docs.forEach((category) {
+          _tempCategories
+              .add(Category(id: category.id, name: category['name']));
+
+          print(category.id);
+          print(category['name']);
+        });
+      });
+
+      _categories = _tempCategories;
+      notifyListeners();
+    } catch (error) {
+      throw error;
+    }
   }
 
   /*List<Product> get favoriteItems {

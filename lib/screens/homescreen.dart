@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +18,48 @@ import '../providers/foods.dart';
 
 /////refactor code into recently, breakfast, lunch & dinner...
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static final routeName = 'home';
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  //var hasRunOnce = true;
+  //var isLoading = false;
+
+  /*@override
+  void didChangeDependencies() {
+    if (hasRunOnce) {
+      setState(() {
+        isLoading = true;
+      });
+
+      Provider.of<Categories>(context, listen: true).fetchCategories().then(
+        (_) {
+          setState(() {
+            isLoading = false;
+          });
+        },
+      );
+    }
+
+    hasRunOnce = false;
+    super.didChangeDependencies();
+  }*/
+
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  /*Future<void> _fetchCategories(BuildContext context) async {
+    await Provider.of<Categories>(context).fetchCategories();
+  }*/
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final categories = Provider.of<Categories>(context).categories;
     final popular = Provider.of<Foods>(context).foods;
+    //final categories = Provider.of<Categories>(context).categories;
     final recent = Provider.of<Foods>(context).recent;
     final breakfast = Provider.of<Foods>(context).breakfast;
     final lunch = Provider.of<Foods>(context).lunch;
@@ -107,14 +142,27 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: size.height * .1,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (_, index) => CategoryButton(
-                      categories: categories,
-                      index: index,
-                      length: categories.length,
-                    ),
-                    itemCount: categories.length,
+                  child: StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('categories')
+                        .snapshots(),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      final documents = snapshot.data.docs;
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) => CategoryButton(
+                          name: documents[index]['name'],
+                          index: index,
+                          length: documents.length,
+                        ),
+                        itemCount: documents.length,
+                      );
+                    },
                   ),
                 ),
                 SizedBox(
@@ -127,16 +175,30 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: size.height * .35,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (_, index) => TrendingCard(
-                      name: popular[index].name,
-                      image: popular[index].image,
-                      index: index,
-                      length: popular.length,
-                    ),
-                    itemCount: popular.length,
+                  child: StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('foods')
+                        .snapshots(),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      final document = snapshot.data.docs;
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) => TrendingCard(
+                          name: document[index]['name'],
+                          image: document[index]['image'],
+                          index: index,
+                          length: document.length,
+                        ),
+                        itemCount: document.length,
+                      );
+                    },
                   ),
+                  /**/
                 ),
                 SizedBox(
                   height: size.height * .015,

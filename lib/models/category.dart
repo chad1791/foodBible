@@ -1,7 +1,4 @@
-//import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-//import 'package:http/http.dart' as http;
 
 class Category with ChangeNotifier {
   final String id;
@@ -13,6 +10,4 @@ class Category with ChangeNotifier {
   });
 
   //Future<void> getCategories() async {}
-
-  //Future<void> addCategory() async {}
 }
