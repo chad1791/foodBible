@@ -13,8 +13,8 @@ import '../widgets/cat_button.dart';
 import '../widgets/trending_card.dart';
 import '../widgets/small_food_card.dart';
 
-import '../providers/categories.dart';
-import '../providers/foods.dart';
+//import '../providers/categories.dart';
+//import '../providers/foods.dart';
 
 /////refactor code into recently, breakfast, lunch & dinner...
 
@@ -58,12 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final popular = Provider.of<Foods>(context).foods;
+    //final popular = Provider.of<Foods>(context).foods;
     //final categories = Provider.of<Categories>(context).categories;
-    final recent = Provider.of<Foods>(context).recent;
-    final breakfast = Provider.of<Foods>(context).breakfast;
-    final lunch = Provider.of<Foods>(context).lunch;
-    final dinner = Provider.of<Foods>(context).dinner;
+    //final recent = Provider.of<Foods>(context).recent;
+    //final breakfast = Provider.of<Foods>(context).breakfast;
+    //final lunch = Provider.of<Foods>(context).lunch;
+    //final dinner = Provider.of<Foods>(context).dinner;
     return Scaffold(
       key: _scaffoldKey,
       drawer: AppDrawer(),
@@ -210,23 +210,36 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(
                   height: size.height * .28,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 12.0,
-                      bottom: 8.0,
-                      right: 12,
-                    ),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) => SmallFoodCard(
-                        image: recent[index].image,
-                        name: recent[index].name,
-                        author: recent[index].creatorId,
-                        length: recent.length,
-                        index: index,
-                      ),
-                      itemCount: recent.length,
-                    ),
+                  child: StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('foods')
+                        .snapshots(),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      final document = snapshot.data.docs;
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                          top: 12.0,
+                          bottom: 8.0,
+                          right: 12,
+                        ),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (_, index) => SmallFoodCard(
+                            image: document[index]['image'],
+                            name: document[index]['name'],
+                            author: document[index]['creatorId'],
+                            length: document.length,
+                            index: index,
+                          ),
+                          itemCount: document.length,
+                        ),
+                      );
+                    },
                   ),
                 ),
                 SizedBox(
@@ -237,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   theme: Theme.of(context).textTheme.headline5,
                   trailingTxt: 'Popular breakfast recipes',
                 ),
-                SizedBox(
+                /*SizedBox(
                   height: size.height * .28,
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -257,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: breakfast.length,
                     ),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: size.height * .015,
                 ),
@@ -266,7 +279,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   theme: Theme.of(context).textTheme.headline5,
                   trailingTxt: 'Popular lunch recipes',
                 ),
-                SizedBox(
+                /*SizedBox(
                   height: size.height * .28,
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -286,7 +299,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: lunch.length,
                     ),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: size.height * .015,
                 ),
@@ -295,7 +308,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   theme: Theme.of(context).textTheme.headline5,
                   trailingTxt: 'Popular dinner recipes',
                 ),
-                SizedBox(
+                /*SizedBox(
                   height: size.height * .28,
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -315,7 +328,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: dinner.length,
                     ),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: size.height * .01,
                 ),
