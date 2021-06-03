@@ -182,6 +182,16 @@ class FoodUI extends StatelessWidget {
                 ),
               ],
             ),
+            floatingActionButton: FloatingActionButton.extended(
+              onPressed: () {
+                // Add your onPressed code here!
+              },
+              label: const Text('Watch Videos'),
+              icon: const Icon(Icons.video_camera_back_rounded),
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
             /*body: Column(
               children: [
                 Expanded(

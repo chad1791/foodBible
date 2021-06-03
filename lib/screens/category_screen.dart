@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Notifications extends StatelessWidget {
-  static final routeName = '/notifications';
+class CategoryScreen extends StatelessWidget {
+  //const CategoryScreen({ Key? key }) : super(key: key);
+  static final routeName = '/screen_category';
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Notifications",
+          'Belizean',
           style: Theme.of(context).textTheme.headline5.copyWith(
                 color: Color(0xfff2f2f2),
               ),
@@ -35,7 +37,7 @@ class Notifications extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'You have 0 notifications!',
+                  'Category selected!',
                   style: Theme.of(context).textTheme.headline6.copyWith(
                         color: Theme.of(context).primaryColor.withOpacity(.7),
                       ),

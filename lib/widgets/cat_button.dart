@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/category_screen.dart';
+
 //import '../models/category.dart';
 
 class CategoryButton extends StatelessWidget {
@@ -28,7 +30,9 @@ class CategoryButton extends StatelessWidget {
               top: 10,
             ),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushNamed(CategoryScreen.routeName);
+              },
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: 25,

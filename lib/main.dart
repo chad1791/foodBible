@@ -1,3 +1,4 @@
+import 'package:cookIt/screens/category_screen.dart';
 import 'package:flutter/material.dart';
 //import 'package:provider/provider.dart';
 
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
               Search.routeName: (_) => Search(),
               Notifications.routeName: (_) => Notifications(),
               Favorites.routeName: (_) => Favorites(),
+              CategoryScreen.routeName: (_) => CategoryScreen(),
             },
           );
         }
