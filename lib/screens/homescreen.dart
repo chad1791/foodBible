@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:provider/provider.dart';
 
 import '../screens/drawer.dart';
 import '../screens/notifications.dart';
@@ -13,9 +12,6 @@ import '../widgets/cat_button.dart';
 import '../widgets/trending_card.dart';
 import '../widgets/small_food_card.dart';
 
-//import '../providers/categories.dart';
-//import '../providers/foods.dart';
-
 /////refactor code into recently, breakfast, lunch & dinner...
 
 class HomeScreen extends StatefulWidget {
@@ -26,44 +22,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //var hasRunOnce = true;
-  //var isLoading = false;
-
-  /*@override
-  void didChangeDependencies() {
-    if (hasRunOnce) {
-      setState(() {
-        isLoading = true;
-      });
-
-      Provider.of<Categories>(context, listen: true).fetchCategories().then(
-        (_) {
-          setState(() {
-            isLoading = false;
-          });
-        },
-      );
-    }
-
-    hasRunOnce = false;
-    super.didChangeDependencies();
-  }*/
-
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  /*Future<void> _fetchCategories(BuildContext context) async {
-    await Provider.of<Categories>(context).fetchCategories();
-  }*/
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    //final popular = Provider.of<Foods>(context).foods;
-    //final categories = Provider.of<Categories>(context).categories;
-    //final recent = Provider.of<Foods>(context).recent;
-    //final breakfast = Provider.of<Foods>(context).breakfast;
-    //final lunch = Provider.of<Foods>(context).lunch;
-    //final dinner = Provider.of<Foods>(context).dinner;
     return Scaffold(
       key: _scaffoldKey,
       drawer: AppDrawer(),
@@ -193,12 +155,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: document[index]['image'],
                           index: index,
                           length: document.length,
+                          docId: document[index].id,
                         ),
                         itemCount: document.length,
                       );
                     },
                   ),
-                  /**/
                 ),
                 SizedBox(
                   height: size.height * .015,

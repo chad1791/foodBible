@@ -9,12 +9,14 @@ class TrendingCard extends StatelessWidget {
   final num length;
   final String image;
   final String name;
+  final String docId;
   const TrendingCard({
     Key key,
     this.index,
     this.length,
     this.image,
     this.name,
+    this.docId,
   }) : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class TrendingCard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(FoodUI.routeName);
+          Navigator.of(context).pushNamed(FoodUI.routeName, arguments: docId);
         },
         child: Container(
           decoration: BoxDecoration(
