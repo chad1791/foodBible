@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widgets/food_reaction.dart';
 import '../widgets/food_details_row.dart';
+import '../widgets/food_method_row.dart';
 
 class FoodUI extends StatelessWidget {
   static final routeName = '/food';
@@ -234,23 +235,42 @@ class FoodUI extends StatelessWidget {
                             SizedBox(
                               height: size.height * .008,
                             ),
-                            FoodDetailsRow(
-                              field: 'Time:  ',
-                              value: '30 mins',
-                            ),
-                            SizedBox(
-                              height: size.height * .005,
-                            ),
-                            FoodDetailsRow(
-                              field: 'Difficulty:  ',
-                              value: 'Easy',
-                            ),
-                            SizedBox(
-                              height: size.height * .005,
-                            ),
-                            FoodDetailsRow(
-                              field: 'Servings:  ',
-                              value: '4',
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('foods')
+                                  .doc(docId)
+                                  .snapshots(),
+                              builder: (ctx, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                                final document = snapshot.data;
+                                return Column(
+                                  children: [
+                                    FoodDetailsRow(
+                                      field: 'Time:  ',
+                                      value: document['details']['time'],
+                                    ),
+                                    SizedBox(
+                                      height: size.height * .005,
+                                    ),
+                                    FoodDetailsRow(
+                                      field: 'Difficulty:  ',
+                                      value: document['details']['difficulty'],
+                                    ),
+                                    SizedBox(
+                                      height: size.height * .005,
+                                    ),
+                                    FoodDetailsRow(
+                                      field: 'Servings:  ',
+                                      value: document['details']['servings'],
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                             SizedBox(
                               height: size.height * .02,
@@ -268,17 +288,34 @@ class FoodUI extends StatelessWidget {
                             SizedBox(
                               height: size.height * .005,
                             ),
-                            Text(
-                              'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  .copyWith(
-                                    fontSize: 16,
-                                  ),
-                            ),
-                            SizedBox(
-                              height: size.height * .022,
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('foods')
+                                  .doc(docId)
+                                  .snapshots(),
+                              builder: (ctx, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                                final document = snapshot.data['ingredients'];
+                                return Column(
+                                  children: [
+                                    ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemBuilder: (ctx, index) =>
+                                          FoodDetailsRow(
+                                        field: '${index + 1})  ',
+                                        value: document[index],
+                                      ),
+                                      itemCount: document.length,
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                             Text(
                               'Method',
@@ -291,48 +328,39 @@ class FoodUI extends StatelessWidget {
                                   ),
                             ),
                             SizedBox(
-                              height: size.height * .008,
+                              height: size.height * .005,
                             ),
-                            Text(
-                              'Step 1',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  .copyWith(
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                            Text(
-                              'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  .copyWith(
-                                    fontSize: 16,
-                                  ),
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('foods')
+                                  .doc(docId)
+                                  .snapshots(),
+                              builder: (ctx, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                                final document = snapshot.data['method'];
+                                return Column(
+                                  children: [
+                                    ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemBuilder: (ctx, index) =>
+                                          FoodMethodRow(
+                                        step: 'Step ${index + 1}',
+                                        description: document[index],
+                                      ),
+                                      itemCount: document.length,
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                             SizedBox(
                               height: size.height * .01,
-                            ),
-                            Text(
-                              'Step 2',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  .copyWith(
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                            Text(
-                              'sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here, sample text here,',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  .copyWith(
-                                    fontSize: 16,
-                                  ),
                             ),
                           ],
                         ),

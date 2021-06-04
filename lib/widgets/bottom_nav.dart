@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../screens/favorites.dart';
@@ -19,7 +21,7 @@ class BottomNav extends StatelessWidget {
         horizontal: 35,
         vertical: 0,
       ),
-      height: size.height * .08,
+      height: size.height * .1,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Color(0xfff2f2f2),
@@ -37,7 +39,7 @@ class BottomNav extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
@@ -48,7 +50,7 @@ class BottomNav extends StatelessWidget {
                 },
               ),
               Positioned(
-                top: (size.height * .09) * .52,
+                top: (size.height * .09) * .45,
                 left: (size.height * .09) * .12,
                 child: Text(
                   'Home',
@@ -68,7 +70,7 @@ class BottomNav extends StatelessWidget {
                 },
               ),
               Positioned(
-                top: (size.height * .09) * .52,
+                top: (size.height * .09) * .45,
                 left: (size.height * .09) * .001,
                 child: Text(
                   'Favorites',
@@ -88,7 +90,7 @@ class BottomNav extends StatelessWidget {
                 },
               ),
               Positioned(
-                top: (size.height * .09) * .52,
+                top: (size.height * .09) * .45,
                 left: (size.height * .09) * .12,
                 child: Text(
                   'Profile',
@@ -108,7 +110,7 @@ class BottomNav extends StatelessWidget {
                 },
               ),
               Positioned(
-                top: (size.height * .09) * .52,
+                top: (size.height * .09) * .44,
                 left: (size.height * .09) * .001,
                 child: Text(
                   'Settings',

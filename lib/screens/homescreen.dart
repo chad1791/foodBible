@@ -118,6 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (_, index) => CategoryButton(
+                          id: documents[index].id,
                           name: documents[index]['name'],
                           index: index,
                           length: documents.length,

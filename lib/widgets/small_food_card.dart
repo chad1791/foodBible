@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 import '../screens/food.dart';
@@ -29,7 +30,7 @@ class SmallFoodCard extends StatelessWidget {
           Navigator.of(context).pushNamed(FoodUI.routeName);
         },
         child: Container(
-          width: size.width * .38,
+          width: Platform.isIOS ? size.width * .41 : size.width * .38,
           color: Colors.transparent,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

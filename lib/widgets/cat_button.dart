@@ -8,12 +8,14 @@ class CategoryButton extends StatelessWidget {
   final int index;
   final int length;
   final String name;
+  final String id;
   const CategoryButton({
     Key key,
     @required this.index,
     //@required this.categories,
     @required this.length,
     @required this.name,
+    this.id,
   }) : super(key: key);
 
   //final List<Category> categories;
@@ -31,7 +33,8 @@ class CategoryButton extends StatelessWidget {
             ),
             child: GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed(CategoryScreen.routeName);
+                Navigator.of(context)
+                    .pushNamed(CategoryScreen.routeName, arguments: id);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(
